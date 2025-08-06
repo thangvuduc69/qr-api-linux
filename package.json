@@ -1,0 +1,19 @@
+{
+  "name": "qr-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "express": "^5.1.0",
+    "jsdom": "^26.1.0",
+    "qr-code-styling": "^1.9.2",
+    "sharp": "^0.34.3"
+  }
+}
