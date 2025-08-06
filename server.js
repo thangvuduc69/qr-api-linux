@@ -11,7 +11,7 @@ const port = 3003;
 app.use(express.json());
 
 app.get("/generate", async (req, res) => {
-  const { text } = req.body;
+  const { text } = req.query;
 
   const qrCode = new QRCodeStyling({
     width: 300,
