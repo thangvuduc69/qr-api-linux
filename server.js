@@ -16,7 +16,7 @@ app.get("/generate", async (req, res) => {
   const qrCode = new QRCodeStyling({
     width: 300,
     height: 300,
-    type: "png",
+    type: "svg",
     data: text || "https://example.com",
     image: "https://raw.githubusercontent.com/thangvuduc69/QR-Code/refs/heads/main/LOGO%20MEDIPHAR%20USA.png", 
     jsdom: JSDOM,
@@ -41,8 +41,8 @@ app.get("/generate", async (req, res) => {
 
 
 qrCode.getRawData("svg").then(async (svgBuffer) => {
-  const pngBuffer = await sharp(svgBuffer).png().toBuffer();
-  res.type('png');
+  // const pngBuffer = await sharp(svgBuffer).png().toBuffer();
+  // res.type('png');
   res.setHeader("Content-Type", "image/png");
   res.setHeader("Cache-Control", "public, max-age=31536000"); // optional
   res.send(pngBuffer);
