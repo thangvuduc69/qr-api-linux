@@ -40,17 +40,29 @@ app.get("/generate", async (req, res) => {
   });
 
 
-qrCode.getRawData("svg").then(async (svgBuffer) => {
-  // const pngBuffer = await sharp(svgBuffer).png().toBuffer();
-  // res.type('png');
-  res.setHeader("Content-Type", "image/svg+xml");
-  res.setHeader("Cache-Control", "public, max-age=31536000"); // optional
-  res.send(pngBuffer);
+//qrCode.getRawData("svg").then(async (svgBuffer) => {
+  //const pngBuffer = await sharp(svgBuffer).png().toBuffer();
+  //res.type('png');
+ // res.setHeader("Content-Type", "image/svg+xml");
+//res.setHeader("Cache-Control", "public, max-age=31536000"); // optional
+  //res.send(pngBuffer);
 
-}).catch((err) => {
-  console.error("Lỗi tạo QR SVG:", err);
-  res.status(500).send("Lỗi khi tạo QR code");
-});
+//).catch((err) => {
+ // console.error("Lỗi tạo QR SVG:", err);
+ // res.status(500).send("Lỗi khi tạo QR code");
+//});
+//});
+
+ try {
+    const svgBuffer = await qrCode.getRawData("svg");
+
+    res.setHeader("Content-Type", "image/svg+xml");
+    res.setHeader("Cache-Control", "public, max-age=31536000");
+    res.send(svgBuffer);
+  } catch (err) {
+    console.error("Lỗi tạo QR SVG:", err);
+    res.status(500).send("Lỗi khi tạo QR code");
+  }
 });
 
 app.listen(port, "0.0.0.0", () => {
