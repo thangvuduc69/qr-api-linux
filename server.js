@@ -43,7 +43,7 @@ app.get("/generate", async (req, res) => {
 qrCode.getRawData("svg").then(async (svgBuffer) => {
   // const pngBuffer = await sharp(svgBuffer).png().toBuffer();
   // res.type('png');
-  res.setHeader("Content-Type", "image/png");
+  res.setHeader("Content-Type", "image/svg+xml");
   res.setHeader("Cache-Control", "public, max-age=31536000"); // optional
   res.send(pngBuffer);
 
